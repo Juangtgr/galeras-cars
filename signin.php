@@ -1,4 +1,11 @@
 <?php
+     //Start session
+     session_start();
+     if(isset($_SESSION['user_id'])){
+         header ('refresh:0;url=index.php');
+     }
+
+
      // Data base connection
      require('config/database.php');
 
@@ -10,7 +17,9 @@
      // Query 
      $sql_login = "
          select
-             u.*
+             u.id,
+             u.email,
+             u.firstname || ' ' || u.lastname as fullname
          from
              users u
          where
@@ -23,7 +32,11 @@
 
      if($res){
          $num = pg_num_rows($res);
+         $row = pg_fetch_assoc($res);
          if($num > 0){
+            $_SESSION['user_id'] =  $row['id'];
+            $_SESSION['user_email'] =  $row['email'];
+            $_SESSION['user_fullname'] =  $row['fullname'];
             header('refresh:0;url=index.html');
          }else{
             echo "<script>alert('Email or password nor found')</script>";

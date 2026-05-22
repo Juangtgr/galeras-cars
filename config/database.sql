@@ -12,3 +12,4 @@ CREATE TABLE users (
     updated_at TIMESTAMP NOT NULL DEFAULT NOW(),
     deleted_at TIMESTAMP
 );
+
