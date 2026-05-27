@@ -1,3 +1,11 @@
+<?php
+     //Start session
+     session_start();
+     if(isset($_SESSION['user_id'])){
+         header ('refresh:0;url=index.php');
+     }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,15 +51,16 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                                     </div>
-                                    <form class="user">
+                                    <form name = "frtn-user" action = "signin.php" method = "post">
                                         <div class="form-group">
                                             <input type="email" class="form-control form-control-user"
-                                                id="exampleInputEmail" aria-describedby="emailHelp"
-                                                placeholder="Enter Email Address...">
+                                                id="exampleInputEmail" placeholder="Enter Email Address..."
+                                                name = "email" required>
                                         </div>
                                         <div class="form-group">
                                             <input type="password" class="form-control form-control-user"
-                                                id="exampleInputPassword" placeholder="Password">
+                                                id="exampleInputPassword" placeholder="Password"
+                                                name = "pswd" required>
                                         </div>
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">

@@ -39,7 +39,7 @@ if ($res_local) {
     $res_supa = pg_query($supa_conn, $sql);
     if ($res_supa) {
         echo "<script>alert('Listo. Usuario registrado')</script>";
-        header('refresh:0;url=login.html');
+        header('refresh:0;url=login.php');
     } else {
         echo "Error: Se guardó en local pero no en la nube.";
     }
